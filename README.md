@@ -1,4 +1,4 @@
-# Klarna Mobile SDK for Klarna Payments - Android Example App
+# Klarna In-App SDK for Klarna Payments - Android Example App
 
 See SDK repository here https://github.com/klarna/klarna-mobile-sdk
 
