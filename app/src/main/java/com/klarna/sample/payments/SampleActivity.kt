@@ -5,7 +5,10 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.Button
-import com.klarna.mobile.sdk.payments.*
+import com.klarna.mobile.sdk.api.payments.KlarnaPaymentView
+import com.klarna.mobile.sdk.api.payments.KlarnaPaymentViewCallback
+import com.klarna.mobile.sdk.api.payments.KlarnaPaymentsSDKError
+import com.klarna.mobile.sdk.api.payments.PAY_LATER
 import com.klarna.sample.payments.api.OrderClient
 import com.klarna.sample.payments.api.OrderPayload
 import kotlinx.coroutines.Dispatchers
@@ -13,8 +16,8 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
-class SampleActivity : AppCompatActivity(), KlarnaPaymentViewCallBack {
-    private val paymentView by lazy { findViewById<PaymentView>(R.id.paymentView) }
+class SampleActivity : AppCompatActivity(), KlarnaPaymentViewCallback {
+    private val paymentView by lazy { findViewById<KlarnaPaymentView>(R.id.paymentView) }
 
 
     private val authorize by lazy { findViewById<Button>(R.id.authorize) }
@@ -74,25 +77,25 @@ class SampleActivity : AppCompatActivity(), KlarnaPaymentViewCallBack {
         job?.cancel()
     }
 
-    override fun onInitialized(view: PaymentView) {
+    override fun onInitialized(view: KlarnaPaymentView) {
         view.load(null)
     }
 
-    override fun onLoaded(view: PaymentView) {
+    override fun onLoaded(view: KlarnaPaymentView) {
         authorize.isEnabled = true
     }
 
-    override fun onAuthorized(view: PaymentView, approved: Boolean, authToken: String?, finalizedRequired: Boolean?) {
+    override fun onLoadPaymentReview(view: KlarnaPaymentView, showForm: Boolean) {}
+
+    override fun onAuthorized(view: KlarnaPaymentView, approved: Boolean, authToken: String?, finalizedRequired: Boolean?) {
         finalize.isEnabled = finalizedRequired ?: false
         order.isEnabled = approved && !(finalizedRequired ?: false)
         order.tag = authToken
     }
 
-    override fun onReauthorized(view: PaymentView, approved: Boolean, authToken: String?) {
+    override fun onReauthorized(view: KlarnaPaymentView, approved: Boolean, authToken: String?) {}
 
-    }
-
-    override fun onErrorOccurred(view: PaymentView, error: KlarnaPaymentError) {
+    override fun onErrorOccurred(view: KlarnaPaymentView, error: KlarnaPaymentsSDKError) {
         println("An error occurred: ${error.name} - ${error.message}")
         if (error.isFatal) {
             paymentView.visibility = View.INVISIBLE
@@ -100,7 +103,7 @@ class SampleActivity : AppCompatActivity(), KlarnaPaymentViewCallBack {
 
     }
 
-    override fun onFinalized(view: PaymentView, approved: Boolean, authToken: String?) {
+    override fun onFinalized(view: KlarnaPaymentView, approved: Boolean, authToken: String?) {
         order.isEnabled = approved
         order.tag = authToken
     }

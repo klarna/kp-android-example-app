@@ -4,7 +4,7 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent">
 
-    <com.klarna.mobile.sdk.payments.PaymentView
+    <com.klarna.mobile.sdk.api.payments.KlarnaPaymentView
             android:id="@+id/paymentView"
             android:layout_weight="1"
             android:layout_width="match_parent"
