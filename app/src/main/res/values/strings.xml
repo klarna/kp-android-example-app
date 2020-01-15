@@ -1,7 +1,8 @@
 <resources>
-    <string name="app_name">Payments Sample</string>
+    <string name="app_name">Klarna Payments Sample</string>
     <string name="authorize">Authorize</string>
     <string name="finalize">Finalize</string>
     <string name="create_order">Order</string>
     <string name="order_completed">Order completed!</string>
+    <string name="error_general">Something went wrong. Please try again later.</string>
 </resources>
