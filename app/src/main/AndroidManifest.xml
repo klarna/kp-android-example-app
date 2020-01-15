@@ -19,13 +19,14 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
 
+            <intent-filter>
                 <action android:name="android.intent.action.VIEW"/>
                 <category android:name="android.intent.category.DEFAULT"/>
                 <category android:name="android.intent.category.BROWSABLE"/>
-
-                <data android:scheme="kp-sample"/>
-                <data android:host="kp"/>
+                <data android:scheme="@string/return_url_scheme"/>
+                <data android:host="@string/return_url_host"/>
             </intent-filter>
         </activity>
         <activity android:name=".OrderCompletedActivity"/>

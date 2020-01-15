@@ -5,4 +5,7 @@
     <string name="create_order">Order</string>
     <string name="order_completed">Order completed!</string>
     <string name="error_general">Something went wrong. Please try again later.</string>
+
+    <string name="return_url_host">kp</string>
+    <string name="return_url_scheme">kp-sample</string>
 </resources>

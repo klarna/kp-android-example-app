@@ -36,11 +36,13 @@ class SampleActivity : AppCompatActivity(), KlarnaPaymentViewCallback {
 
     private fun initialize() {
         job = GlobalScope.launch {
+
+            // create a session and then initialize the payment view with the client token received in the response
             val sessionCall = OrderClient.instance.createCreditSession(OrderPayload.defaultPayload)
             try {
                 sessionCall.execute().body()?.let { session ->
                     runOnUiThread {
-                        klarnaPaymentView.initialize(session.client_token, "kp-sample://kp")
+                        klarnaPaymentView.initialize(session.client_token, "${getString(R.string.return_url_scheme)}://${getString(R.string.return_url_host)}")
                     }
                 } ?: showError(null)
             } catch (exception: Exception) {
@@ -51,6 +53,8 @@ class SampleActivity : AppCompatActivity(), KlarnaPaymentViewCallback {
 
     private fun createOrder() {
         job = GlobalScope.launch {
+
+            // create the order using the auth token received in the authorization response
             val orderCall = OrderClient.instance.createOrder(orderButton.tag as String, OrderPayload.defaultPayload)
             try {
                 val response = orderCall.execute()
@@ -100,10 +104,14 @@ class SampleActivity : AppCompatActivity(), KlarnaPaymentViewCallback {
     }
 
     override fun onInitialized(view: KlarnaPaymentView) {
+
+        // load the payment view after its been initialized
         view.load(null)
     }
 
     override fun onLoaded(view: KlarnaPaymentView) {
+
+        // enable the authorization after the payment view is loaded
         authorizeButton.isEnabled = true
     }
 
