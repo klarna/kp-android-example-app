@@ -32,7 +32,6 @@
             app:layout_constraintLeft_toRightOf="@id/authorizeButton"
             app:layout_constraintRight_toLeftOf="@id/orderButton"/>
 
-
     <Button
             android:id="@+id/orderButton"
             android:layout_width="wrap_content"

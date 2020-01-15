@@ -7,8 +7,8 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object OrderClient {
 
-    private val user = "<please enter here>"
-    private val password = "<please enter here>"
+    private const val user = "<please enter here>"
+    private const val password = "<please enter here>"
 
     val instance: OrderService by lazy {
 
