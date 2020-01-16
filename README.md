@@ -41,7 +41,7 @@ As previously mentioned Klarna Payments is supported in the native integration. 
 * Android 4.4 or later.
 
 ## Support
-If you are having any issues running the SDK in the example app, please create a question on [Stack Overflow](https://stackoverflow.com/questions/tagged/klarna-mobile-sdk) tagged with `klarna-mobile-sdk`. If you think that something is wrong with the example app itself, please create an issue.
+If you are having any issues running the SDK in the example app, please create a question on [Stack Overflow](https://stackoverflow.com/questions/tagged/klarna-inapp-sdk) tagged with `klarna-inapp-sdk`. If you think that something is wrong with the example app itself, please create an issue.
 
 ### Developer Documentation
 
