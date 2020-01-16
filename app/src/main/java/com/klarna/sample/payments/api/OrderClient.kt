@@ -7,8 +7,8 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object OrderClient {
 
-    private const val user = "<please enter here>"
-    private const val password = "<please enter here>"
+    private const val user = "" // please enter user here
+    private const val password = "" // please enter password here
 
     val instance: OrderService by lazy {
 
@@ -21,4 +21,6 @@ object OrderClient {
             .build()
         retrofit.create(OrderService::class.java)
     }
+
+    fun hasSetCredentials() = user.isNotBlank() && password.isNotBlank()
 }

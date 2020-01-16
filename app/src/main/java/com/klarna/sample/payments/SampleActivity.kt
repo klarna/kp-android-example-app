@@ -35,19 +35,26 @@ class SampleActivity : AppCompatActivity(), KlarnaPaymentViewCallback {
     }
 
     private fun initialize() {
-        job = GlobalScope.launch {
+        if (OrderClient.hasSetCredentials()) {
+            job = GlobalScope.launch {
 
-            // create a session and then initialize the payment view with the client token received in the response
-            val sessionCall = OrderClient.instance.createCreditSession(OrderPayload.defaultPayload)
-            try {
-                sessionCall.execute().body()?.let { session ->
-                    runOnUiThread {
-                        klarnaPaymentView.initialize(session.client_token, "${getString(R.string.return_url_scheme)}://${getString(R.string.return_url_host)}")
-                    }
-                } ?: showError(null)
-            } catch (exception: Exception) {
-                showError(exception.message)
+                // create a session and then initialize the payment view with the client token received in the response
+                val sessionCall = OrderClient.instance.createCreditSession(OrderPayload.defaultPayload)
+                try {
+                    sessionCall.execute().body()?.let { session ->
+                        runOnUiThread {
+                            klarnaPaymentView.initialize(
+                                session.client_token,
+                                "${getString(R.string.return_url_scheme)}://${getString(R.string.return_url_host)}"
+                            )
+                        }
+                    } ?: showError(null)
+                } catch (exception: Exception) {
+                    showError(exception.message)
+                }
             }
+        } else {
+            showError(getString(R.string.error_credentials))
         }
     }
 
