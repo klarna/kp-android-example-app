@@ -1,6 +1,6 @@
 # Klarna In-App SDK - Android Demo App
 ![Platforms](https://img.shields.io/badge/platform-android-lightgrey)
-[![GitHub](https://img.shields.io/github/license/klarna/klarna-mobile-sdk)](https://github.com/klarna/klarna-mobile-sdk/blob/master/LICENSE)
+[![GitHub](https://img.shields.io/github/license/klarna/klarna-mobile-sdk)](https://github.com/klarna/kp-android-example-app/blob/master/LICENSE)
 
 This is an example Android app to demonstrate [Klarna In-App SDK](https://github.com/klarna/klarna-mobile-sdk) usage.
 
@@ -33,7 +33,7 @@ As previously mentioned Klarna Payments is supported in the native integration. 
 
 ![](https://developers.klarna.com/static/in-app/kp-diagram.png)
 
-###Screenshots
+### Screenshots
 
 <img src="Screenshots/Screenshot1.png" width="250"/> <img src="Screenshots/Screenshot2.png" width="250"/> <img src="Screenshots/Screenshot3.png" width="250"/>
 
