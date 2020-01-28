@@ -9,12 +9,8 @@ data class OrderPayload(
     val order_lines: List<OrderLine>
 ) {
 
-
     companion object {
-
-
         val defaultPayload by lazy {
-
             val orderLIne = OrderLine(
                 "https://demo.klarna.se/fashion/kp/media/wysiwyg/Accessoriesbagimg.jpg",
                 "physical",
@@ -26,11 +22,9 @@ data class OrderPayload(
                 350,
                 0
             )
-
             OrderPayload("SE", "SEK", "en-US", 350, 0, listOf(orderLIne))
         }
     }
-
 }
 
 data class OrderLine(

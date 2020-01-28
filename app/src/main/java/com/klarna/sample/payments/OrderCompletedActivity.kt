@@ -6,13 +6,10 @@ import androidx.appcompat.app.AppCompatActivity
 
 class OrderCompletedActivity : AppCompatActivity() {
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         setContentView(R.layout.activity_order_completed)
     }
-
 
     override fun onBackPressed() {
         super.onBackPressed()
