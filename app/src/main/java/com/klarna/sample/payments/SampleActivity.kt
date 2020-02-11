@@ -3,6 +3,7 @@ package com.klarna.sample.payments
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.webkit.WebView
 import android.widget.Button
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -41,14 +42,15 @@ class SampleActivity : AppCompatActivity(), KlarnaPaymentViewCallback {
                 // create a session and then initialize the payment view with the client token received in the response
                 val sessionCall = OrderClient.instance.createCreditSession(OrderPayload.defaultPayload)
                 try {
-                    sessionCall.execute().body()?.let { session ->
+                    val resp = sessionCall.execute()
+                    resp.body()?.let { session ->
                         runOnUiThread {
                             klarnaPaymentView.initialize(
                                 session.client_token,
                                 "${getString(R.string.return_url_scheme)}://${getString(R.string.return_url_host)}"
                             )
                         }
-                    } ?: showError(null)
+                    } ?: showError(getString(R.string.error_server, resp.code()))
                 } catch (exception: Exception) {
                     showError(exception.message)
                 }

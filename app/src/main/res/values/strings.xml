@@ -9,4 +9,5 @@
     <string name="return_url_host">kp</string>
     <string name="return_url_scheme">kp-sample</string>
     <string name="error_credentials">Please enter your credentials first.</string>
+    <string name="error_server">Error: The server responded with status code %1$d. Check the credentials in OrderClient.</string>
 </resources>
