@@ -9,13 +9,14 @@ object OrderClient {
 
     private const val user = "" // please enter user here
     private const val password = "" // please enter password here
+    private const val baseUrl = "https://api.playground.klarna.com/" // please update the url according to your location and desired environment (playground, production)
 
     val instance: OrderService by lazy {
 
         val builder = OkHttpClient.Builder().addInterceptor(BasicAuthInterceptor(user, password))
         val okHttpClient = builder.build()
         val retrofit = Retrofit.Builder()
-            .baseUrl("https://api.playground.klarna.com/payments/v1/")
+            .baseUrl(baseUrl)
             .addConverterFactory(GsonConverterFactory.create())
             .client(okHttpClient)
             .build()

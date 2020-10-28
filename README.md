@@ -19,9 +19,37 @@ Klarna In-App SDK offers two integration approaches: **Native integration** and 
 
 ## Setup
 
-* Open the project and enter your Merchant credentials in [`OrderClient`](app/src/main/java/com/klarna/sample/payments/api/OrderClient.kt) file.
-* Rebuild the project.
-* Run the `app` configuration.
+#### Credentials
+
+Please enter your Merchant credentials (`user` and `password` values) in [`OrderClient`](app/src/main/java/com/klarna/sample/payments/api/OrderClient.kt) file.
+
+#### Base URL
+
+Klarna APIs are available through different base URLs relating to your location and interaction needs.
+
+Please update the `baseUrl` value in [`OrderClient`](app/src/main/java/com/klarna/sample/payments/api/OrderClient.kt) file using one of these options:
+
+##### Live environment (Production):
+
+* Europe: `https://api.klarna.com/`
+* North America: `https://api-na.klarna.com/`
+* Oceania: `https://api-oc.klarna.com/`
+
+##### Testing environment (Playground):
+
+* Europe: `https://api.playground.klarna.com/`
+* North America: `https://api-na.playground.klarna.com/`
+* Oceania: `https://api-oc.playground.klarna.com/` 
+
+#### Payment Category
+
+To specify the payment method category to show on the payment page, please update the `paymentCategory` value in [`SampleActivity`] (app/src/main/java/com/klarna/sample/payments/SampleActivity.kt) file using one of these options:
+
+* `KlarnaPaymentCategory.PAY_LATER`
+* `KlarnaPaymentCategory.PAY_NOW`
+* `KlarnaPaymentCategory.SLICE_IT`
+
+Now you can rebuild the project and run the `app` configuration.
 
 ### Native Integration
 As previously mentioned, Klarna Payments supports native integration. The main idea behind Klarna Payments is to give merchants the ability to offer Klarna’s payment methods to customers. Because Klarna doesn’t own the entire checkout flow, a check must be performed before an order is created. Our goal with this integration is to offer you the same simple development experience as you have on the web. As such, integrating Klarna Payments consists of four steps:

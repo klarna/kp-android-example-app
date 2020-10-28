@@ -17,12 +17,12 @@ data class OrderPayload(
                 "AccessoryBag-Ref-ID-0001",
                 "Light Brown Accessory Bag",
                 1,
-                350,
+                10000,
                 0,
-                350,
+                10000,
                 0
             )
-            OrderPayload("SE", "SEK", "en-US", 350, 0, listOf(orderLIne))
+            OrderPayload("SE", "SEK", "en-US", 10000, 0, listOf(orderLIne))
         }
     }
 }

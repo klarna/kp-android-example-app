@@ -7,10 +7,7 @@ import android.webkit.WebView
 import android.widget.Button
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import com.klarna.mobile.sdk.api.payments.KlarnaPaymentView
-import com.klarna.mobile.sdk.api.payments.KlarnaPaymentViewCallback
-import com.klarna.mobile.sdk.api.payments.KlarnaPaymentsSDKError
-import com.klarna.mobile.sdk.api.payments.PAY_LATER
+import com.klarna.mobile.sdk.api.payments.*
 import com.klarna.sample.payments.api.OrderClient
 import com.klarna.sample.payments.api.OrderPayload
 import kotlinx.coroutines.Dispatchers
@@ -25,6 +22,8 @@ class SampleActivity : AppCompatActivity(), KlarnaPaymentViewCallback {
     private val finalizeButton by lazy { findViewById<Button>(R.id.finalizeButton) }
     private val orderButton by lazy { findViewById<Button>(R.id.orderButton) }
 
+    private val paymentCategory = KlarnaPaymentCategory.PAY_LATER // please update this value if needed
+
     private var job: Job? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,7 +31,7 @@ class SampleActivity : AppCompatActivity(), KlarnaPaymentViewCallback {
         setContentView(R.layout.activity_sample)
         initialize()
         setupButtons()
-        klarnaPaymentView.category = PAY_LATER
+        klarnaPaymentView.category = paymentCategory
     }
 
     private fun initialize() {
