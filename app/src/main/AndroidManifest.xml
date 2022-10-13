@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.klarna.sample.payments">
+        package="com.klarna.sample.payments">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
             android:allowBackup="true"
@@ -13,23 +13,25 @@
 
         <activity
                 android:name=".SampleActivity"
-                android:launchMode="singleTop"
-                android:screenOrientation="sensorPortrait">
+                android:exported="true"
+                android:launchMode="singleTop">
 
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
 
             <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-                <category android:name="android.intent.category.BROWSABLE"/>
-                <data android:scheme="@string/return_url_scheme"/>
-                <data android:host="@string/return_url_host"/>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="@string/return_url_scheme" />
+                <data android:host="@string/return_url_host" />
             </intent-filter>
         </activity>
-        <activity android:name=".OrderCompletedActivity"/>
+        <activity android:name=".OrderCompletedActivity" />
     </application>
 
 </manifest>
