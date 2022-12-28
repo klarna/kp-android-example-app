@@ -17,7 +17,11 @@ import kotlinx.coroutines.launch
 
 class SampleActivity : AppCompatActivity(), KlarnaPaymentViewCallback {
 
-    private val klarnaPaymentView by lazy { findViewById<KlarnaPaymentView>(R.id.klarnaPaymentView) }
+    private val klarnaPaymentView by lazy {
+        findViewById<KlarnaPaymentView>(R.id.klarnaPaymentView).apply {
+            registerPaymentViewCallback(this@SampleActivity)
+        }
+    }
     private val authorizeButton by lazy { findViewById<Button>(R.id.authorizeButton) }
     private val finalizeButton by lazy { findViewById<Button>(R.id.finalizeButton) }
     private val orderButton by lazy { findViewById<Button>(R.id.orderButton) }
@@ -150,14 +154,8 @@ class SampleActivity : AppCompatActivity(), KlarnaPaymentViewCallback {
         orderButton.tag = authToken
     }
 
-    override fun onResume() {
-        super.onResume()
-        klarnaPaymentView.registerPaymentViewCallback(this)
-    }
-
     override fun onPause() {
         super.onPause()
-        klarnaPaymentView.unregisterPaymentViewCallback(this)
         job?.cancel()
     }
 
