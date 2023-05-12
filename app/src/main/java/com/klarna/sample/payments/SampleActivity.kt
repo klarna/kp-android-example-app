@@ -7,6 +7,7 @@ import android.webkit.WebView
 import android.widget.Button
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import com.klarna.mobile.sdk.api.KlarnaLoggingLevel
 import com.klarna.mobile.sdk.api.payments.*
 import com.klarna.sample.payments.api.OrderClient
 import com.klarna.sample.payments.api.OrderPayload
@@ -36,6 +37,7 @@ class SampleActivity : AppCompatActivity(), KlarnaPaymentViewCallback {
         initialize()
         setupButtons()
         klarnaPaymentView.category = paymentCategory
+        klarnaPaymentView.loggingLevel = KlarnaLoggingLevel.Verbose
     }
 
     private fun initialize() {
